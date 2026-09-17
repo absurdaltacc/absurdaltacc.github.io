@@ -42,6 +42,8 @@ export default defineConfig({
         main: resolve(__dirname, "src/index.html"),
         "404": resolve(__dirname, "src/404.html"),
         "player": resolve(__dirname, "src/player.html"),
+        spotify: resolve(__dirname, "src/spotify.html"),
+        ps5: resolve(__dirname, "src/ps5.html"),
       },
       output: {
         entryFileNames: `${assetPath}.js`,

@@ -27,6 +27,7 @@ const desktopApps = [
   { name: "spotify", href: "/spotify.html", icon: "♪" },
   { name: "games", href: "#", icon: "▣" },
   { name: "anime", href: "#", icon: "◌" },
+  { name: "ps5", href: "/ps5.html", icon: "△" },
   { name: "roblox", href: "https://www.roblox.com/", icon: "R" },
 ];
 
