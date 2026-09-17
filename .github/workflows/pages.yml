@@ -29,6 +29,23 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Set up Folio WASM toolchain
+        run: |
+          rustup toolchain install nightly-2026-06-30 --profile minimal --component rust-src
+          rustup target add wasm32-unknown-unknown --toolchain nightly-2026-06-30
+          sudo apt-get update
+          sudo apt-get install --yes binaryen
+          cargo install wasm-bindgen-cli --version 0.2.105 --locked
+          cargo install wasm-snip --locked
+
+      - name: Build proxy runtime artifacts
+        run: bun run build-proxy
+
       - name: Build frontend
         run: bunx vite build --config vite.config.js
 
