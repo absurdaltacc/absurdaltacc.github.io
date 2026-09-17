@@ -109,7 +109,7 @@
     <noscript>javascript is required... /ᐠ - ˕ -マ</noscript>
     <section id="tilt-intro" aria-label="Absent welcome">
       <div class="last-lock-panel">
-        <div class="last-lock-mark" aria-hidden="true">
+        <button id="last-lock-mark" class="last-lock-mark" type="button" aria-label="Tap five times to reveal the hourly password">
           <svg viewBox="0 0 100 100" role="img" aria-label="Absent cross">
             <rect x="46" y="8" width="8" height="84" rx="2" fill="#edf2f7" />
             <rect x="22" y="30" width="56" height="10" rx="2" fill="#edf2f7" />
@@ -117,6 +117,7 @@
         </div>
         <h1>Absent</h1>
         <p>TRYING TO BYPASS THE PASSWORD IS ILLEGAL AND WILL GET YOU BANNED.</p>
+        <p id="last-password-hint" class="last-password-hint" aria-live="polite">tap the cross five times to reveal this hour's password</p>
         <label class="last-lock-field">
           <span>Password</span>
           <input id="last-password" type="password" autocomplete="current-password" placeholder="enter password" />
@@ -131,7 +132,19 @@
         const passwordInput = document.getElementById("last-password");
         const enterButton = document.getElementById("last-enter");
         const app = document.querySelector(".meow");
-        const correctPassword = "absentminded";
+        const cross = document.getElementById("last-lock-mark");
+        const passwordHint = document.getElementById("last-password-hint");
+        const hour = Math.floor(Date.now() / 3600000);
+        const generatePassword = (value) => {
+          let hash = 2166136261;
+          for (const character of String(value)) {
+            hash ^= character.charCodeAt(0);
+            hash = Math.imul(hash, 16777619);
+          }
+          return `absnt-${(hash >>> 0).toString(36).padStart(7, "0")}`;
+        };
+        const correctPassword = generatePassword(hour);
+        let crossTaps = 0;
 
         const unlock = () => {
           const value = passwordInput?.value?.trim() ?? "";
@@ -140,14 +153,22 @@
             passwordInput?.setAttribute("aria-invalid", "true");
             return;
           }
-          sessionStorage.setItem("last-password-verified", "true");
+          sessionStorage.setItem("absent-password-hour", String(hour));
           intro?.classList.add("is-dismissed");
           app?.classList.add("is-unlocked");
           document.body.classList.remove("tilt-intro-active");
           window.setTimeout(() => intro?.remove(), 420);
         };
 
-        if (sessionStorage.getItem("last-password-verified") === "true") {
+        const revealPassword = () => {
+          crossTaps += 1;
+          if (crossTaps >= 5 && passwordHint) {
+            passwordHint.textContent = `current password: ${correctPassword}`;
+            passwordHint.classList.add("is-revealed");
+          }
+        };
+
+        if (sessionStorage.getItem("absent-password-hour") === String(hour)) {
           intro?.remove();
           app?.classList.add("is-unlocked");
         } else {
@@ -155,6 +176,7 @@
         }
 
         enterButton?.addEventListener("click", unlock);
+        cross?.addEventListener("click", revealPassword);
         passwordInput?.addEventListener("keydown", (event) => {
           if (event.key === "Enter") unlock();
         });

@@ -1,19 +1,3 @@
-import { encodeMochiUrl } from "../runtime/utils.ts";
-
-export interface Bookmark {
-  name: string;
-  url: string;
-  icon?: string;
-}
-
-export const DEFAULT_BOOKMARKS: Bookmark[] = [
-  { name: "spotify", url: "/spotify.html", icon: `/!cover!/${encodeMochiUrl("https://open.spotify.com/favicon.ico")}/` },
-  { name: "ps5", url: "https://raw.githubusercontent.com/viroda1/anchor/refs/heads/main/app-ps5.html", icon: `/!cover!/${encodeMochiUrl("https://cdn-icons-png.flaticon.com/512/732/732221.png")}/` },
-  { name: "roblox", url: "https://www.roblox.com/", icon: `/!cover!/${encodeMochiUrl("https://www.roblox.com/favicon.ico")}/` },
-  { name: "youtube", url: "https://youtube.com/" },
-  { name: "soundcloud", url: "https://soundcloud.com/", icon: `/!cover!/${encodeMochiUrl("https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-c93ce58b59.ico")}/` },
-];
-
 export const SEARCH_ENGINES = {
   duckduckgo: "https://duckduckgo.com/?q=",
   brave: "https://search.brave.com/search?q=",

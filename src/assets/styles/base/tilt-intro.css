@@ -27,11 +27,27 @@
 }
 
 .last-lock-mark {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
     width: 68px;
     height: 68px;
     margin: 0 auto 14px;
     display: grid;
     place-items: center;
+}
+
+.last-password-hint {
+    color: #7f8a96;
+    font-size: 0.68rem;
+    margin: -8px 0 18px;
+    text-transform: none;
+}
+
+.last-password-hint.is-revealed {
+    color: #edf2f7;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 .last-lock-mark svg {

@@ -14,11 +14,18 @@
       a { color: #edf2f7; text-decoration: none; }
       .brand { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
       .back { color: #a2acb7; font-size: 13px; }
-      iframe { border: 0; height: 100%; width: 100%; }
+      main { margin: auto; max-width: 640px; padding: 28px 20px; text-align: center; }
+      h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0 0 14px; }
+      p { color: #a2acb7; line-height: 1.6; }
+      .launch { background: #edf2f7; border-radius: 8px; color: #090b0d; display: inline-block; font-weight: 700; padding: 12px 16px; }
     </style>
   </head>
   <body>
     <header><a class="back" href="/">back</a><a class="brand" href="/">Absent / PS5</a></header>
-    <iframe title="Anchor PS5 app" src="https://raw.githubusercontent.com/viroda1/anchor/main/app-ps5.html"></iframe>
+    <main>
+      <h1>PS5</h1>
+      <p>The PS5 emulator app is available through the Anchor source project. Open it in a new tab when external app access is available.</p>
+      <a class="launch" href="https://github.com/viroda1/anchor/blob/main/app-ps5.html" target="_blank" rel="noopener noreferrer">Open PS5 app source</a>
+    </main>
   </body>
 </html>

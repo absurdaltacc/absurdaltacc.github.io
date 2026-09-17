@@ -7,7 +7,6 @@ import {
 import Sidebar from "../components/browser/Sidebar.tsx";
 import NavBar from "../components/browser/NavBar.tsx";
 import SearchBar from "../components/browser/SearchBar.tsx";
-import Bookmarks from "../components/browser/Bookmarks.tsx";
 import Footer from "../components/layout/Footer.tsx";
 import TopBar from "../components/browser/TopBar.tsx";
 import AtomLogo from "../components/icons/AtomLogo.tsx";
@@ -149,7 +148,6 @@ export default function App() {
             ))}
           </nav>
         </div>
-        <Bookmarks />
         {gamesMounted && (
           <Suspense fallback={null}>
             <GamesCatalog openOnMount />
