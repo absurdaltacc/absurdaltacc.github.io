@@ -1,8 +1,15 @@
 # Absent
 
-Absent is a private web playground based on [the upstream Lyra project](https://github.com/gayq/lyra), rebranded and maintained by **viroda1** and **unblcokableman** with a simplified black-and-silver shell and a YukiOS-style game catalog.
+Absent is a private web playground with a simplified black-and-silver shell, browser tools, games, media, cloud syncing, and extension support.
 
-[![join our discord](https://invidget.switchblade.xyz/4GeWaGPh6c)](https://discord.gg/4GeWaGPh6c)
+## deploy
+
+[![Deploy to GitHub Pages](https://github.com/absurdaltacc/absurdaltacc.github.io/actions/workflows/pages.yml/badge.svg)](https://github.com/absurdaltacc/absurdaltacc.github.io/actions/workflows/pages.yml)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/absurdaltacc/absurdaltacc.github.io)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/absurdaltacc/absurdaltacc.github.io)
+[![Deploy on Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/absurdaltacc/absurdaltacc.github.io)
+[![Run on Replit](https://replit.com/badge/github/absurdaltacc/absurdaltacc.github.io)](https://replit.com/github/absurdaltacc/absurdaltacc.github.io)
+[![Remix on Glitch](https://cdn.glitch.global/1f6f2c5d-5c4c-4f46-bc78-7edb9da3e4a9/remix-button.svg)](https://glitch.com/edit/#!/import/github/absurdaltacc/absurdaltacc.github.io)
 
 ## features
 - nice ui
@@ -15,11 +22,8 @@ Absent is a private web playground based on [the upstream Lyra project](https://
 
 ## self-hosting
 ```bash
-# clone
-git clone https://github.com/gayq/lyra
-
-# run setup file
-cd tilt
+# install and run
+bun install
 bash setup.sh
 ```
 ## local development
@@ -30,14 +34,8 @@ bun dev
 
 ## credits
 - **Absent:** viroda1 and unblcokableman
-- [selenite](https://selenite.cc/) - game source
-- [edurocks](https://www.edurocks.org/) - game source
-- [gn-math](https://github.com/gn-math/gn-math.github.io/) - game source
-- [wasm.rip](https://wasm.rip/) - game source
-- [velara](https://velara.cc/) - game source
-- [truffled](https://truffled.lol/) - game source
-- [mercury workshop](https://github.com/mercuryworkshop/) - scramjet, epoxy, and libcurl
-- [sapphire](https://github.com/x8rr/sapphire) - rivet's base
+- upstream browser and proxy projects
+- community game and media catalogs
 
 ## license
-The upstream-derived portions of this project are licensed under [GNU AGPLv3](./LICENSE). Original Tilt branding and creator terms are documented in [TILT-CREATOR-TERMS.md](./TILT-CREATOR-TERMS.md).
+The project is licensed under [GNU AGPLv3](./LICENSE). Original branding and creator terms are documented in [ABSENT-CREATOR-TERMS.md](./ABSENT-CREATOR-TERMS.md).

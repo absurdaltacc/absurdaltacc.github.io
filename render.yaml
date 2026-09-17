@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: absent-browser
+    runtime: node
+    buildCommand: npm install -g bun && bun install --frozen-lockfile && bunx vite build --config vite.config.js
+    startCommand: npx serve dist -s -l $PORT
+    plan: free

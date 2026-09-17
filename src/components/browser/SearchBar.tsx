@@ -6,7 +6,7 @@ import { IconMagnifyingGlass2 } from "../icons";
 const placeholders = [
   "have anything in mind?",
   "( • ̀ω•́ )✧",
-  "join the discord server!",
+  "search anything...",
   "1 update per year",
   "hi lol",
   "yo search something here",

@@ -1,7 +1,7 @@
 {
-  "name": "absent",
+  "name": "absent-browser",
   "version": "0.1.0",
-  "description": "Absent, a private web playground by viroda1 and unblcokableman",
+  "description": "Absent browser, a private web playground by viroda1 and unblcokableman",
   "type": "module",
   "license": "AGPL-3.0-or-later",
   "packageManager": "bun@1.4.2",

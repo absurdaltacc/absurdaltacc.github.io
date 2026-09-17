@@ -1,0 +1,5 @@
+{
+  "buildCommand": "bunx vite build --config vite.config.js",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

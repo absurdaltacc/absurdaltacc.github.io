@@ -10,7 +10,6 @@ export const DEFAULT_BOOKMARKS: Bookmark[] = [
   { name: "spotify", url: "/spotify.html", icon: `/!cover!/${encodeMochiUrl("https://open.spotify.com/favicon.ico")}/` },
   { name: "ps5", url: "https://raw.githubusercontent.com/viroda1/anchor/refs/heads/main/app-ps5.html", icon: `/!cover!/${encodeMochiUrl("https://cdn-icons-png.flaticon.com/512/732/732221.png")}/` },
   { name: "roblox", url: "https://www.roblox.com/", icon: `/!cover!/${encodeMochiUrl("https://www.roblox.com/favicon.ico")}/` },
-  { name: "discord", url: "https://discord.com/login/", icon: `/!cover!/${encodeMochiUrl("https://discord.com/assets/favicon.ico")}/` },
   { name: "youtube", url: "https://youtube.com/" },
   { name: "soundcloud", url: "https://soundcloud.com/", icon: `/!cover!/${encodeMochiUrl("https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-c93ce58b59.ico")}/` },
 ];
@@ -65,8 +64,6 @@ export const BANGS = {
   tiktok: { name: "TikTok", url: "https://www.tiktok.com/search?q={query}" },
   rd: { name: "Reddit", url: "https://www.reddit.com/search/?q={query}" },
   reddit: { name: "Reddit", url: "https://www.reddit.com/search/?q={query}" },
-  dc: { name: "Discord", url: "https://discord.com/channels/@me" },
-  discord: { name: "Discord", url: "https://discord.com/channels/@me" },
   w: {
     name: "Wikipedia",
     url: "https://en.wikipedia.org/wiki/Special:Search?search={query}",
