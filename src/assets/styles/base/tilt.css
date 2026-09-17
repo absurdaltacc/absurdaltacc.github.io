@@ -1,0 +1,133 @@
+:root {
+    --bg-body: #090b0d;
+    --bg-body-translucent: rgba(9, 11, 13, 0.8);
+    --bg-body-grid: #12171b;
+    --text-primary: #edf2f7;
+    --text-secondary: #d2d9e0;
+    --text-muted: #a2acb7;
+    --text-dimmed: #bcc5cf;
+    --text-faint: #7f8a96;
+    --text-white: #f5f7fb;
+    --bg-surface-0: #0d1013;
+    --bg-surface-1: #12171b;
+    --bg-surface-2: #171d23;
+    --bg-surface-3: #1c242a;
+    --bg-surface-4: #212a31;
+    --bg-surface-5: #273038;
+    --bg-surface-hover: #303a41;
+    --bg-surface-active: #3d4953;
+    --border-subtle: rgba(237, 242, 247, 0.12);
+    --border-faint: rgba(237, 242, 247, 0.18);
+    --border-light: rgba(237, 242, 247, 0.38);
+    --border-medium: #586673;
+    --border-focus: #edf2f7;
+    --accent-color: #edf2f7;
+    --hover-bg: rgba(237, 242, 247, 0.07);
+    --hover-bg-light: rgba(237, 242, 247, 0.04);
+    --active-bg: rgba(237, 242, 247, 0.12);
+    --color-icon: #edf2f7;
+    --color-icon-muted: #b3bdc6;
+    --color-icon-dim: #8a98a5;
+    --color-tab-active: #f7f9fb;
+    --color-link: #edf2f7;
+    --color-link-hover: #fff;
+    --color-label: #d7dde4;
+    --color-footer: #9ca6b1;
+    --btn-primary-bg: #edf2f7;
+    --btn-primary-bg-hover: #ffffff;
+    --btn-primary-text: #0a0d0f;
+    --btn-secondary-bg: #161b20;
+    --btn-secondary-bg-hover: #212a31;
+    --btn-secondary-text: #edf2f7;
+    --input-bg: #11171c;
+    --input-text: #f5f7fb;
+    --input-placeholder: #7b8794;
+    --input-focus-search: rgba(237, 242, 247, 0.42);
+    --scrollbar-track: #090b0d;
+    --scrollbar-thumb: #4a555d;
+    --scrollbar-thumb-hover: #64707b;
+    --selection-bg: rgba(237, 242, 247, 0.9);
+    --selection-text: #090b0d;
+    --overlay-bg: rgba(9, 11, 13, 0.84);
+    --brand-color: #edf2f7;
+    --search-glow-border: rgba(237, 242, 247, 0.75);
+    --search-glow-bg: rgba(237, 242, 247, 0.08);
+    --search-inset-bg: #0d1115;
+    --search-inset-bg-focus: #151c22;
+}
+
+body {
+    background-color: var(--bg-body);
+    background-image:
+        linear-gradient(rgba(237, 242, 247, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237, 242, 247, 0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center top;
+}
+
+#branding-container {
+    border: 1px solid transparent;
+    padding: 5px 9px 5px 6px;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+#branding-container:hover {
+    background: rgba(237, 242, 247, 0.06);
+    border-color: rgba(237, 242, 247, 0.22);
+    transform: translateY(-1px);
+}
+
+#branding-container .atom-logo {
+    color: #edf2f7;
+    flex: 0 0 auto;
+}
+
+#brand {
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.atom-logo {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 4;
+    transition: color 180ms ease, filter 180ms ease;
+}
+
+.atom-logo .cross-vertical,
+.atom-logo .cross-horizontal {
+    fill: currentColor;
+    stroke: none;
+}
+
+.atom-logo .atom-core {
+    fill: #f5f7fb;
+    stroke: none;
+}
+
+.atom-logo:hover {
+    color: #ffffff;
+}
+
+.tilt-title {
+    animation: none;
+    margin-bottom: 16px;
+}
+
+.tilt-title .atom-logo {
+    color: #edf2f7;
+    stroke-width: 4;
+}
+
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tilt-title {
+        animation: none;
+    }
+}

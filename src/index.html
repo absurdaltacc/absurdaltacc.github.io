@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7" />
+    <title>Absent</title>
+    <style>
+      :root {
+        --bg-body: #050505;
+        --lock-bg: #090b0d;
+        --lock-panel: rgba(20, 24, 28, 0.96);
+        --lock-border: rgba(255, 255, 255, 0.1);
+        --lock-text: #edf2f7;
+        --lock-muted: #9ba6b2;
+        --lock-accent: #f3f6fb;
+      }
+      [data-theme="catppuccin"] {
+        --bg-body: #1e1e2e;
+      }
+      [data-theme="dracula"] {
+        --bg-body: #282a36;
+      }
+      [data-theme="synthwave"] {
+        --bg-body: #13111c;
+      }
+      [data-theme="tokyo night"] {
+        --bg-body: #1a1b26;
+      }
+      [data-theme="everforest"] {
+        --bg-body: #272e33;
+      }
+      [data-theme="kanagawa"] {
+        --bg-body: #1f1f28;
+      }
+      [data-theme="solarized"] {
+        --bg-body: #002b36;
+      }
+      [data-theme="sakura"] {
+        --bg-body: #120a10;
+      }
+      body {
+        background: var(--bg-body);
+      }
+    </style>
+    <script>
+      (function () {
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme && storedTheme !== "default")
+          document.documentElement.setAttribute("data-theme", storedTheme);
+      })();
+    </script>
+    <link rel="icon" href="/absent-favicon.svg" type="image/svg+xml" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" /></noscript>
+    <script>
+      (function () {
+        const recoveryUrl = new URL(window.location.href);
+        let recoveryAttempted = recoveryUrl.searchParams.has("tilt-recovery");
+
+        window.__tiltRecoverAsset = function () {
+          if (recoveryAttempted) return;
+          recoveryAttempted = true;
+          const target = new URL(window.location.href);
+          target.searchParams.set("tilt-recovery", "1");
+          window.location.replace(target.href);
+        };
+        window.addEventListener(
+          "vite:preloadError",
+          function (event) {
+            event.preventDefault();
+            window.__tiltRecoverAsset();
+          },
+          { once: true },
+        );
+        window.addEventListener(
+          "error",
+          function (event) {
+            const element = event.target;
+            const tagName = element?.tagName?.toLowerCase();
+            const assetUrl =
+              tagName === "script"
+                ? element.src
+                : tagName === "link" &&
+                    (element.rel === "modulepreload" ||
+                      element.rel === "stylesheet")
+                  ? element.href
+                  : "";
+            if (!assetUrl) return;
+            const failedUrl = new URL(assetUrl, window.location.href);
+            if (
+              failedUrl.origin === window.location.origin &&
+              /^\/assets\/[a-f0-9]{12}\/[^/]+$/.test(failedUrl.pathname)
+            ) {
+              window.__tiltRecoverAsset();
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <script type="module" src="/app/entry.tsx"></script>
+  </head>
+  <body>
+    <noscript>javascript is required... /ᐠ - ˕ -マ</noscript>
+    <section id="tilt-intro" aria-label="Absent welcome">
+      <div class="last-lock-panel">
+        <div class="last-lock-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Absent cross">
+            <rect x="46" y="8" width="8" height="84" rx="2" fill="#edf2f7" />
+            <rect x="22" y="30" width="56" height="10" rx="2" fill="#edf2f7" />
+          </svg>
+        </div>
+        <h1>Absent</h1>
+        <p>TRYING TO BYPASS THE PASSWORD IS ILLEGAL AND WILL GET YOU BANNED.</p>
+        <label class="last-lock-field">
+          <span>Password</span>
+          <input id="last-password" type="password" autocomplete="current-password" placeholder="enter password" />
+        </label>
+        <button id="last-enter" type="button">Enter</button>
+      </div>
+    </section>
+    <main class="meow"></main>
+    <script>
+      (() => {
+        const intro = document.getElementById("tilt-intro");
+        const passwordInput = document.getElementById("last-password");
+        const enterButton = document.getElementById("last-enter");
+        const app = document.querySelector(".meow");
+        const correctPassword = "isaacdagoat";
+
+        const unlock = () => {
+          const value = passwordInput?.value?.trim() ?? "";
+          if (value !== correctPassword) {
+            passwordInput?.focus();
+            passwordInput?.setAttribute("aria-invalid", "true");
+            return;
+          }
+          sessionStorage.setItem("last-password-verified", "true");
+          intro?.classList.add("is-dismissed");
+          app?.classList.add("is-unlocked");
+          document.body.classList.remove("tilt-intro-active");
+          window.setTimeout(() => intro?.remove(), 420);
+        };
+
+        if (sessionStorage.getItem("last-password-verified") === "true") {
+          intro?.remove();
+          app?.classList.add("is-unlocked");
+        } else {
+          document.body.classList.add("tilt-intro-active");
+        }
+
+        enterButton?.addEventListener("click", unlock);
+        passwordInput?.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") unlock();
+        });
+      })();
+    </script>
+  </body>
+</html>
