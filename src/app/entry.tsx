@@ -137,7 +137,7 @@ function initializeTiltApp() {
 
   scheduleIdleTask(() => {
     if (readAdvancedToggle("preloadProxy")) warmProxyRuntime();
-  }, 750);
+  }, 5000);
 
   const onSwMessage = (e: MessageEvent) => store.handleServiceWorkerMessage(e);
   if ("serviceWorker" in navigator) {

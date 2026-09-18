@@ -14,13 +14,11 @@ const NewTabModal = lazy(loadNewTabModal);
 const SettingsModal = lazy(loadSettingsModal);
 
 const apps = [
-  ["games", "G", "games"],
-  ["anime", "A", "anime"],
   ["spotify", "S", "spotify"],
-  ["new tab", "+", "browser"],
+  ["steam", "S", "arcade"],
+  ["browser", "+", "browser"],
   ["settings", "⚙", "settings"],
   ["guide", "?", "guide"],
-  ["arcade", "Ω", "arcade"],
 ] as const;
 
 export default function App() {
@@ -31,6 +29,7 @@ export default function App() {
   const [toolbarOpen, setToolbarOpen] = useState(() => localStorage.getItem("absent-toolbar-open") !== "false");
   const [guideOpen, setGuideOpen] = useState(false);
   const [accent, setAccent] = useState(() => localStorage.getItem("absent-accent") || "silver");
+  const [contextApp, setContextApp] = useState<string | null>(null);
 
   useEffect(() => {
     const showGames = () => setGamesMounted(true);
@@ -69,6 +68,8 @@ export default function App() {
     localStorage.setItem("absent-accent", value);
   };
 
+  const closeContext = () => setContextApp(null);
+
   return (
     <>
       <TopBar />
@@ -87,13 +88,19 @@ export default function App() {
             </button>
             {toolbarOpen && <nav class="absent-apps" aria-label="apps">
               {apps.map(([label, icon, id]) => (
-                <button type="button" class="absent-app" key={id} onClick={() => launch(id)}>
+                <button type="button" class="absent-app" key={id} onClick={() => launch(id)} onContextMenu={(event) => { event.preventDefault(); setContextApp(id); }}>
                   <span class="absent-app-icon">{icon}</span>
                   <span>{label}</span>
                 </button>
               ))}
             </nav>}
           </div>
+          {contextApp && <div class="absent-context-menu" role="menu" onMouseLeave={closeContext}>
+            <strong>{contextApp}</strong>
+            <button type="button" onClick={() => { launch(contextApp); closeContext(); }}>open</button>
+            <button type="button" onClick={() => { setToolbarOpen(false); localStorage.setItem("absent-toolbar-open", "false"); closeContext(); }}>hide toolbar</button>
+            <button type="button" onClick={() => { setGuideOpen(true); closeContext(); }}>customize</button>
+          </div>}
           {guideOpen && <section class="absent-guide" aria-label="Absent customization guide">
             <div class="absent-guide-heading"><strong>Absent starter guide</strong><button type="button" onClick={() => setGuideOpen(false)}>close</button></div>
             <p>Keep the browser fast: use the search bar for URLs, open Games for the Aetheris catalog, and use Settings for transport, themes, cloaking, and extensions.</p>

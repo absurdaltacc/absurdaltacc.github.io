@@ -39,6 +39,10 @@
 .absent-app { align-items: center; background: #0e1418; border: 1px solid #253039; border-radius: 8px; color: #aeb9c2; cursor: pointer; display: flex; font: inherit; font-size: 11px; gap: 9px; padding: 9px 12px; transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease; }
 .absent-app:hover, .absent-app:focus-visible { background: #182128; border-color: var(--absent-accent); color: var(--absent-accent); outline: none; transform: translateY(-2px); }
 .absent-app-icon { align-items: center; background: #1b2931; border-radius: 5px; color: var(--absent-accent); display: inline-flex; font-size: 11px; font-weight: 700; height: 22px; justify-content: center; width: 22px; }
+.absent-context-menu { background: #10171c; border: 1px solid #52616c; border-radius: 7px; box-shadow: 0 12px 30px #0009; display: grid; gap: 4px; margin-top: 8px; padding: 8px; position: relative; z-index: 20; }
+.absent-context-menu strong { color: var(--absent-accent); font-size: 10px; letter-spacing: .12em; padding: 4px 7px; text-transform: uppercase; }
+.absent-context-menu button { background: transparent; border: 0; border-radius: 4px; color: #aeb9c2; cursor: pointer; font: inherit; font-size: 10px; padding: 6px 8px; text-align: left; }
+.absent-context-menu button:hover { background: #24313a; color: var(--absent-accent); }
 .absent-guide { background: #0c1216; border: 1px solid #253039; border-radius: 8px; color: #9ba7b1; font-size: 11px; line-height: 1.6; margin-top: 16px; max-width: 520px; padding: 14px 16px; width: 100%; }
 .absent-guide p { margin: 10px 0 14px; }
 .absent-guide-heading { align-items: center; color: var(--absent-accent); display: flex; justify-content: space-between; letter-spacing: .12em; text-transform: uppercase; }

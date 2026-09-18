@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Absent Arcade</title>
+    <title>Absent ubg</title>
     <style>
       :root { color-scheme: dark; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
       * { box-sizing: border-box; }
@@ -13,26 +13,46 @@
       a { color: #aeb9c2; text-decoration: none; }
       h1 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: .12em; margin: 0; text-transform: uppercase; }
       p { color: #74818d; font-size: 12px; }
+      .toolbar { display: flex; gap: 10px; margin: 0 0 18px; }
+      input { background: #10161a; border: 1px solid #253039; border-radius: 7px; color: #edf2f7; font: inherit; padding: 11px 13px; width: 100%; }
       .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
       .game { background: #10161a; border: 1px solid #253039; border-radius: 9px; color: #edf2f7; cursor: pointer; display: block; font: inherit; padding: 18px; text-align: left; transition: border-color 160ms ease, transform 160ms ease; }
       .game:hover { border-color: #edf2f7; transform: translateY(-2px); }
       .game strong { display: block; font-size: 13px; margin-bottom: 8px; }
-      .game small { color: #74818d; font-size: 10px; }
+      .game small { color: #74818d; display: block; font-size: 10px; margin-top: 8px; }
+      .count { color: #74818d; font-size: 10px; margin: 0 0 14px; }
     </style>
   </head>
   <body>
     <main>
-      <header><div><h1>Arcade</h1><p>Cartel-inspired quick launch, served through stable jsDelivr game assets.</p></div><a href="/">back</a></header>
-      <section class="grid" aria-label="games">
-        <button class="game" data-url="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/fnf.html"><strong>Friday Night Funkin</strong><small>rhythm / direct launch</small></button>
-        <button class="game" data-url="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/1v1.html"><strong>1v1.LOL</strong><small>action / direct launch</small></button>
-        <button class="game" data-url="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/retrobowl.html"><strong>Retro Bowl</strong><small>sports / direct launch</small></button>
-        <button class="game" data-url="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/spacewaves.html"><strong>Space Waves</strong><small>arcade / direct launch</small></button>
-        <button class="game" data-url="https://quantil.jsdelivr.net/gh/s0n-1m-cr1n3/sc13nc3@latest/assets/html/main/gdweb.html"><strong>GDWEB+</strong><small>platform / direct launch</small></button>
-      </section>
+      <header><div><h1>Arcade</h1><p>Cartel-inspired launcher powered by the full YukiOS app registry.</p></div><a href="/">back</a></header>
+      <div class="toolbar"><input id="game-search" type="search" placeholder="search the full arcade catalog..." autocomplete="off"></div>
+      <p id="game-count" class="count">loading catalog...</p>
+      <section id="game-grid" class="grid" aria-label="games"></section>
     </main>
     <script>
-      document.querySelectorAll(".game").forEach((button) => button.addEventListener("click", () => { window.location.href = button.dataset.url; }));
+      const registryUrl = "https://cdn.jsdelivr.net/gh/Reeyuki/YukiOS@main/webos-desktop/src/games/gamesList.js";
+      const grid = document.getElementById("game-grid");
+      const count = document.getElementById("game-count");
+      const search = document.getElementById("game-search");
+      let games = [];
+      const normalizeUrl = (url) => url?.startsWith("/") ? `https://reeyuki.github.io/YukiOS${url}` : url;
+      const render = () => {
+        const query = search.value.trim().toLowerCase();
+        const visible = games.filter((game) => (game.title || "").toLowerCase().includes(query));
+        count.textContent = `${visible.length} games available`;
+        grid.replaceChildren();
+        for (const game of visible) {
+          if (!game.url || game.type !== "game") continue;
+          const button = document.createElement("button");
+          button.className = "game";
+          button.innerHTML = `<strong>${game.title || "Untitled"}</strong><small>YukiOS catalog / direct launch</small>`;
+          button.addEventListener("click", () => { window.location.href = normalizeUrl(game.url); });
+          grid.append(button);
+        }
+      };
+      search.addEventListener("input", render);
+      import(registryUrl).then(({ appMap }) => { games = Object.values(appMap); render(); }).catch(() => { count.textContent = "catalog unavailable"; });
     </script>
   </body>
 </html>

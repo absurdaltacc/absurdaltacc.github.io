@@ -4,12 +4,7 @@ import { IconCloud, IconSettingsGear4 } from "../icons";
 import { svgIcon } from "../../core/ui/svgIcon";
 import { invokeWindowAction } from "../../core/browser/windowActions.ts";
 import AtomLogo from "../icons/AtomLogo.tsx";
-import {
-  preloadAnimeCatalog,
-  loadCloudSync,
-  preloadGamesCatalog,
-  loadSettingsModal,
-} from "../../app/loaders.ts";
+import { loadCloudSync, loadSettingsModal } from "../../app/loaders.ts";
 
 export default function TopBar() {
   useEffect(() => {
@@ -60,28 +55,24 @@ export default function TopBar() {
           <AtomLogo size={26} />
           <span id="brand">Absent</span>
         </div>
-        <a
-          href="#"
+        <button
+          type="button"
           id="choi"
           class="icon-btn"
           data-tooltip={gamesViewSignal.value ? "search" : "games"}
-          onPointerEnter={preloadGamesCatalog}
-          onFocus={preloadGamesCatalog}
           onClick={handleGamesClick}
         >
           <span id="games-icon" />
-        </a>
-        <a
-          href="#"
+        </button>
+        <button
+          type="button"
           id="media-catalog"
           class="icon-btn"
           data-tooltip={animeViewSignal.value ? "search" : "anime"}
-          onPointerEnter={preloadAnimeCatalog}
-          onFocus={preloadAnimeCatalog}
           onClick={handleAnimeClick}
         >
           <span id="anime-icon" />
-        </a>
+        </button>
       </div>
       <div id="top-right-stuff">
         <div
@@ -96,8 +87,8 @@ export default function TopBar() {
           <IconCloud solid />
           <span id="auth-status">cloud sync</span>
         </div>
-        <a
-          href="#"
+        <button
+          type="button"
           id="settings"
           class="icon-btn"
           data-tooltip="settings"
@@ -106,7 +97,7 @@ export default function TopBar() {
           onClick={handleSettingsClick}
         >
           <IconSettingsGear4 solid class="settings" />
-        </a>
+        </button>
       </div>
     </>
   );
