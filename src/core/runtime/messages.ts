@@ -1,4 +1,4 @@
-export const NEGATIVE = "... /ᐠ - ˕ -マ";
+export const NEGATIVE = "... absent runtime";
 export const POSITIVE = "!! (˵◝ ⩊  ◜˵マ";
 
 function withoutEmotionalEnding(message: string): string {

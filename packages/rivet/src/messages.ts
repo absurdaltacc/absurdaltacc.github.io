@@ -1,4 +1,4 @@
-export const NEGATIVE = "... /ᐠ - ˕ -マ";
+export const NEGATIVE = "... absent runtime";
 
 function messageBase(mutMessage: string): string {
   let message = mutMessage.trimEnd();

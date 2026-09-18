@@ -20,6 +20,7 @@ const apps = [
   ["new tab", "+", "browser"],
   ["settings", "⚙", "settings"],
   ["guide", "?", "guide"],
+  ["arcade", "Ω", "arcade"],
 ] as const;
 
 export default function App() {
@@ -60,6 +61,7 @@ export default function App() {
     if (id === "browser") return (window as typeof window & { showNewTabModal?: () => void }).showNewTabModal?.();
     if (id === "spotify") return window.location.assign("/spotify.html");
     if (id === "guide") return setGuideOpen(true);
+    if (id === "arcade") return window.location.assign("/arcade.html");
   };
 
   const changeAccent = (value: string) => {

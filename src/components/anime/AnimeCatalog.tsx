@@ -327,7 +327,7 @@ export default function AnimeCatalog({
   ]);
 
   const placeholder = loaded
-    ? "search for any anime... ◝(ᵔᗜᵔ)◜"
+          ? "search for any anime..."
     : "fetching anime...";
 
   const isSearchActive = query.trim().length > 0;

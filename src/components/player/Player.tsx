@@ -181,7 +181,7 @@ async function fetchStreamInfo(
     () =>
       controller.abort(
         new DOMException(
-          "stream information request timed out... /ᐠ - ˕ -マ",
+          "stream information request timed out",
           "TimeoutError",
         ),
       ),

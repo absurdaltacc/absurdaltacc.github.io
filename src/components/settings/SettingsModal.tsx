@@ -456,7 +456,7 @@ export default function SettingsModal({
               {t.label}
             </button>
           ))}
-          <div class="settings-bottom">{versionInfo || "≽^•⩊•^≼"}</div>
+          <div class="settings-bottom">{versionInfo || "Absent settings"}</div>
         </div>
         <div class="settings-content-wrapper">
           {activeTab === "preferences" && (
@@ -566,7 +566,7 @@ export default function SettingsModal({
           <div class="tab-content active">
             <div class="settings-item">
               <label>theme</label>
-              <p>change the look and feel of Tilt.</p>
+              <p>change the look and feel of Absent.</p>
               <Selector
                 label="theme"
                 value={theme}

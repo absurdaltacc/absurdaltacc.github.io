@@ -294,8 +294,8 @@ export default function NavBar() {
             id="searchInputt"
             placeholder={
               activeTab?.isLoading
-                ? "fetching url... (˶˃ ᵕ ˂˶)"
-                : "search or enter url (˶>⩊<˶)"
+                ? "loading address..."
+                : "search or enter a URL"
             }
             autocomplete="off"
           />

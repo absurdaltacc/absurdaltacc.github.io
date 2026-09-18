@@ -4,14 +4,13 @@ import { useSearchInputBindings } from "../../features/search/search.ts";
 import { IconMagnifyingGlass2 } from "../icons";
 
 const placeholders = [
-  "have anything in mind?",
-  "( • ̀ω•́ )✧",
+  "search the web...",
+  "enter a URL...",
+  "find a game...",
+  "open a private tab...",
   "search anything...",
-  "1 update per year",
-  "hi lol",
-  "yo search something here",
 ];
-const PLACEHOLDER_INDEX_STORAGE_KEY = "tilt-search-placeholder-index";
+const PLACEHOLDER_INDEX_STORAGE_KEY = "absent-search-placeholder-index";
 
 function pickPlaceholder(): string {
   let previousIndex = -1;

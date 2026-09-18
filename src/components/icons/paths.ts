@@ -38,7 +38,7 @@ function createSource(svg: string): IconSource {
     openingEnd < 0 ||
     closingStart <= openingEnd
   ) {
-    throw new Error("invalid canonical icon source... /ᐠ - ˕ -マ");
+    throw new Error("invalid canonical icon source");
   }
   const openingTag = normalizedSvg.slice(0, openingEnd + 1);
   const content = normalizedSvg.slice(openingEnd + 1, closingStart);
@@ -59,7 +59,7 @@ function createSource(svg: string): IconSource {
   );
   const viewBox = attributes["viewBox"];
   if (!viewBox) {
-    throw new Error("canonical icon is missing a viewbox... /ᐠ - ˕ -マ");
+    throw new Error("canonical icon is missing a viewbox");
   }
   return Object.freeze({
     viewBox,
