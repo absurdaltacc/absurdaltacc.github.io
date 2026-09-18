@@ -1,9 +1,12 @@
 #tilt-intro {
     align-items: center;
     background: #090b0d;
+    box-sizing: border-box;
     display: flex;
     inset: 0;
     justify-content: center;
+    min-height: 100vh;
+    overflow-y: auto;
     position: fixed;
     transition: opacity 260ms ease, visibility 260ms ease;
     z-index: 5000;
@@ -21,6 +24,8 @@
     border-radius: 18px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
     max-width: 420px;
+    box-sizing: border-box;
+    margin: 24px;
     padding: 28px 24px;
     text-align: center;
     width: min(88vw, 420px);
@@ -62,6 +67,7 @@
     letter-spacing: 0.18em;
     margin: 0 0 16px;
     text-transform: uppercase;
+    overflow-wrap: anywhere;
 }
 
 .last-lock-panel p {
@@ -70,6 +76,7 @@
     line-height: 1.6;
     margin: 0 0 18px;
     text-transform: uppercase;
+    overflow-wrap: anywhere;
 }
 
 .last-lock-field {
