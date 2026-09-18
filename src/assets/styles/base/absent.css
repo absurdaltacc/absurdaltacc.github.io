@@ -1,4 +1,46 @@
 .absent-content {
+  align-items: stretch;
+  background: #050708;
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 76px;
+}
+
+.absent-home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 12vh 20px 56px;
+  width: 100%;
+}
+
+.absent-home-mark { color: #edf2f7; margin-bottom: 16px; }
+.absent-home-mark .atom-logo { color: currentColor; }
+.absent-wordmark { color: #edf2f7; font-size: 15px; font-weight: 700; letter-spacing: .24em; margin-bottom: 30px; }
+.absent-wordmark span { color: #66737e; font-size: 9px; font-weight: 400; letter-spacing: .16em; margin-left: 8px; }
+.absent-home .search-bar { margin: 0; max-width: 520px; width: 100%; }
+.absent-home .search-bar input[type="text"] { background: #0d1216; border: 1px solid #27323a; border-radius: 8px; padding: 15px 18px; width: calc(100% - 50px); }
+.absent-home-hint { color: #66737e; font-size: 10px; margin-top: 12px; }
+.absent-apps { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 34px; }
+.absent-app { align-items: center; background: #0e1418; border: 1px solid #253039; border-radius: 8px; color: #aeb9c2; cursor: pointer; display: flex; font: inherit; font-size: 11px; gap: 9px; padding: 9px 12px; transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease; }
+.absent-app:hover, .absent-app:focus-visible { background: #182128; border-color: #71818d; color: #f2f5f8; outline: none; transform: translateY(-2px); }
+.absent-app-icon { align-items: center; background: #1b2931; border-radius: 5px; color: #edf2f7; display: inline-flex; font-size: 11px; font-weight: 700; height: 22px; justify-content: center; width: 22px; }
+.absent-home-meta { color: #596772; font-size: 10px; letter-spacing: .04em; margin-top: 44px; text-transform: lowercase; }
+.absent-home-meta b { color: #303b43; font-weight: 400; margin: 0 8px; }
+.status-dot { background: #8fd3a2; border-radius: 50%; display: inline-block; height: 6px; margin-right: 6px; width: 6px; }
+body.browser-view .absent-home { display: none; }
+body.browser-view .absent-content { padding-top: 0; }
+@media (max-width: 600px) {
+  .absent-home { padding-top: 9vh; }
+  .absent-wordmark { font-size: 13px; }
+  .absent-wordmark span { display: block; margin: 8px 0 0; text-align: center; }
+  .absent-home-meta { text-align: center; }
+}
+.absent-content {
   background: #07090b;
   align-items: stretch;
   box-sizing: border-box;
