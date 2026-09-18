@@ -19,6 +19,7 @@ const apps = [
   ["spotify", "S", "spotify"],
   ["new tab", "+", "browser"],
   ["settings", "⚙", "settings"],
+  ["guide", "?", "guide"],
 ] as const;
 
 export default function App() {
@@ -26,6 +27,9 @@ export default function App() {
   const [animeMounted, setAnimeMounted] = useState(false);
   const [newTabMounted, setNewTabMounted] = useState(false);
   const [settingsMounted, setSettingsMounted] = useState(false);
+  const [toolbarOpen, setToolbarOpen] = useState(() => localStorage.getItem("absent-toolbar-open") !== "false");
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [accent, setAccent] = useState(() => localStorage.getItem("absent-accent") || "silver");
 
   useEffect(() => {
     const showGames = () => setGamesMounted(true);
@@ -55,6 +59,12 @@ export default function App() {
     if (id === "settings") return window.toggleSettingsModal?.();
     if (id === "browser") return (window as typeof window & { showNewTabModal?: () => void }).showNewTabModal?.();
     if (id === "spotify") return window.location.assign("/spotify.html");
+    if (id === "guide") return setGuideOpen(true);
+  };
+
+  const changeAccent = (value: string) => {
+    setAccent(value);
+    localStorage.setItem("absent-accent", value);
   };
 
   return (
@@ -63,23 +73,32 @@ export default function App() {
       <Sidebar />
       <div class="content-area absent-content">
         <NavBar />
-        <main class="absent-home">
+        <main class={`absent-home accent-${accent}`}>
           <div class="absent-home-mark"><AtomLogo size={74} /></div>
           <div class="absent-wordmark">ABSENT <span>PRIVATE BROWSER</span></div>
           <SearchBar />
           <div class="absent-home-hint">search the web or enter a URL</div>
-          <nav class="absent-apps" aria-label="apps">
-            {apps.map(([label, icon, id]) => (
-              <button type="button" class="absent-app" key={id} onClick={() => launch(id)}>
-                <span class="absent-app-icon">{icon}</span>
-                <span>{label}</span>
-              </button>
-            ))}
-          </nav>
-          <div class="absent-home-meta"><span class="status-dot" /> private session <b>·</b> aetheris games <b>·</b> nexus browser core</div>
+          <Footer />
+          <div class="absent-toolbar-wrap">
+            <button class="absent-hamburger" type="button" aria-expanded={toolbarOpen} onClick={() => { const next = !toolbarOpen; setToolbarOpen(next); localStorage.setItem("absent-toolbar-open", String(next)); }}>
+              <span /><span /><span />
+            </button>
+            {toolbarOpen && <nav class="absent-apps" aria-label="apps">
+              {apps.map(([label, icon, id]) => (
+                <button type="button" class="absent-app" key={id} onClick={() => launch(id)}>
+                  <span class="absent-app-icon">{icon}</span>
+                  <span>{label}</span>
+                </button>
+              ))}
+            </nav>}
+          </div>
+          {guideOpen && <section class="absent-guide" aria-label="Absent customization guide">
+            <div class="absent-guide-heading"><strong>Absent starter guide</strong><button type="button" onClick={() => setGuideOpen(false)}>close</button></div>
+            <p>Keep the browser fast: use the search bar for URLs, open Games for the Aetheris catalog, and use Settings for transport, themes, cloaking, and extensions.</p>
+            <div class="absent-accent-picker"><span>accent</span>{["silver", "cyan", "violet", "green"].map((option) => <button class={accent === option ? "active" : ""} type="button" key={option} onClick={() => changeAccent(option)}>{option}</button>)}</div>
+          </section>}
         </main>
         <div id="iframe-container"><div id="iframe-resize-divider" /></div>
-        <Footer />
       </div>
       {gamesMounted && <Suspense fallback={null}><GamesCatalog openOnMount /></Suspense>}
       {animeMounted && <Suspense fallback={null}><AnimeCatalog openOnMount /></Suspense>}
